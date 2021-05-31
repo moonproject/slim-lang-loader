@@ -9,7 +9,10 @@ function prepareArguments(slimOptions) {
 	return Object.entries(slimOptions).map(function(option_with_value) {
 		// Appends options like:
 		// -o "foo=bar" -o "baz=blah"
-		return "-o \"" + option_with_value.join("=") + "\"";
+		if (option_with_value[0] === 'command_line_options')
+			return options_with_value[1];
+		else
+			return "-o \"" + option_with_value.join("=") + "\"";
 	}).join(" ");
 }
 
